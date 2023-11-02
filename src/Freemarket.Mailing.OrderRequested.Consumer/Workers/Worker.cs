@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Confluent.Kafka;
 using Freemarket.Ordering.Applications.ExternalEvents;
 using Freemarket.Ordering.Infrastructure.Kafka;
@@ -16,7 +17,6 @@ public class Worker : BackgroundService
     
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        
         var config = new ConsumerConfig
         {
             BootstrapServers = "localhost:9092",
@@ -37,14 +37,14 @@ public class Worker : BackgroundService
 
             while (!stoppingToken.IsCancellationRequested)
             {
+                var sw = new Stopwatch();
+
+                sw.Start();
+                
                 var consumeResult = consumer.Consume(stoppingToken);
                 
                 if (consumeResult is null)
                     continue;
-                
-                _logger.LogInformation("Email sent to order {Topic} {Offset} {Partition} {Key} {@Value}", consumeResult.Topic, consumeResult.Offset, consumeResult.Partition.Value, consumeResult.Message.Key, consumeResult.Message.Value);
-                
-                Thread.Sleep(100);
                 
                 try
                 {
@@ -54,6 +54,10 @@ public class Worker : BackgroundService
                 {
                     Console.WriteLine($"Commit error: {e.Error.Reason}");
                 }
+                
+                sw.Stop();
+                
+                _logger.LogInformation("Email sent to customer elapsed:{Elapsed} {Topic} {Offset} {Partition} {Key} {@Value}", sw.Elapsed, consumeResult.Topic, consumeResult.Offset, consumeResult.Partition.Value, consumeResult.Message.Key, consumeResult.Message.Value);
             }
             
             consumer.Close();

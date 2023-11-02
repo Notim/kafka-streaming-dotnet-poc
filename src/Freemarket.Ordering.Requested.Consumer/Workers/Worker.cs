@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Confluent.Kafka;
 using Freemarket.Ordering.Applications.ExternalEvents;
 using Freemarket.Ordering.Infrastructure.Kafka;
@@ -39,12 +40,12 @@ public class Worker : BackgroundService
             {
                 var consumeResult = consumer.Consume(stoppingToken);
                 
+                var sw = new Stopwatch();
+
+                sw.Start();
+                
                 if (consumeResult is null)
                     continue;
-                
-                _logger.LogInformation("Message consumed {Topic} {Offset} {Partition} {Key} {@Value}", consumeResult.Topic, consumeResult.Offset, consumeResult.Partition.Value, consumeResult.Message.Key, consumeResult.Message.Value.ToString());
-                
-                Thread.Sleep(1000);
                 
                 try
                 {
@@ -54,6 +55,11 @@ public class Worker : BackgroundService
                 {
                     Console.WriteLine($"Commit error: {e.Error.Reason}");
                 }
+                
+                sw.Stop();
+                
+                _logger.LogInformation("Order created elapsed:{Elapsed} {Topic} {Offset} {Partition} {Key} {Value}", sw.Elapsed, consumeResult.Topic, consumeResult.Offset, consumeResult.Partition.Value, consumeResult.Message.Key, consumeResult.Message.Value.ToString());
+
             }
             
             consumer.Close();

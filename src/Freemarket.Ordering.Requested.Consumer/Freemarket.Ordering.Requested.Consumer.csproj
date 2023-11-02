@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-OrderRequestConsumer-5E2B8BBD-5612-4D59-8BAE-A64F2ACABA7C</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <RootNamespace>OrderRequestConsumer</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Confluent.Kafka" Version="2.3.0" />
+        <PackageReference Include="Confluent.SchemaRegistry" Version="2.3.0" />
+        <PackageReference Include="Confluent.SchemaRegistry.Serdes" Version="1.3.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Freemarket.Ordering.Application\Freemarket.Ordering.Application.csproj" />
+      <ProjectReference Include="..\Freemarket.Ordering.Domain\Freemarket.Ordering.Domain.csproj" />
+      <ProjectReference Include="..\Freemarket.Ordering.Infrastructure.Kafka\Freemarket.Ordering.Infrastructure.Kafka.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+</Project>

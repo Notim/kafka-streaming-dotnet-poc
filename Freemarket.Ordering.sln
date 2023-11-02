@@ -1,0 +1,103 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freemarket.Ordering.Requested.Consumer", "src\Freemarket.Ordering.Requested.Consumer\Freemarket.Ordering.Requested.Consumer.csproj", "{CC38ED83-0B01-4AC8-A25F-A9E291C7F2A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{71FA73CE-C699-4E24-972D-B94E4AEEEF7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{2C85B6BA-7DE1-4722-8750-8A6733724A62}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		Readme.md = Readme.md
+		img.png = img.png
+		.gitignore = .gitignore
+		.dockerignore = .dockerignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freemarket.Ordering.Bff", "src\Freemarket.Ordering.Bff\Freemarket.Ordering.Bff.csproj", "{1BB23997-AED8-4C39-84C8-A0B3FD68CCEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{ECC17FEA-57D4-4788-9CC1-C9BD7A513FD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{AFF2355C-9887-4FE7-A0C3-E17FEF76DCEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freemarket.Ordering.Infrastructure.Kafka", "src\Freemarket.Ordering.Infrastructure.Kafka\Freemarket.Ordering.Infrastructure.Kafka.csproj", "{812828DD-E4C6-4726-A83D-4E2199DC486F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{5FC0B19D-4FB7-4E69-AF43-399C15AA3AF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freemarket.Ordering.Domain", "src\Freemarket.Ordering.Domain\Freemarket.Ordering.Domain.csproj", "{6550BB10-7B6B-4BB0-8B56-B651B6A92F92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freemarket.Ordering.Application", "src\Freemarket.Ordering.Application\Freemarket.Ordering.Application.csproj", "{13F8F5D0-DB2B-4E64-8839-6A80F942D5D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freemarket.Mailing.OrderRequested.Consumer", "src\Freemarket.Mailing.OrderRequested.Consumer\Freemarket.Mailing.OrderRequested.Consumer.csproj", "{A0BB585F-6071-4738-BCF0-9DCB7838253E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApis", "WebApis", "{7FD3C0A8-75C1-486A-A633-1F1ADD62B5B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workers", "Workers", "{81FC04A0-44DC-486B-BBE4-959AA155A585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freemarket.Ordering.Unittests", "tests\Freemarket.Ordering.Unittests\Freemarket.Ordering.Unittests.csproj", "{0291C717-9AD5-4F50-9846-966814FC93C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A38F848F-FAEF-49C7-9ED4-34E691023999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freemarket.Ordering.IntegratedTests", "tests\Freemarket.Ordering.IntegratedTests\Freemarket.Ordering.IntegratedTests.csproj", "{8931F2FC-8465-4022-A754-4FA4F3AB54BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freemarket.Ordering.FunctionalTests", "tests\Freemarket.Ordering.FunctionalTests\Freemarket.Ordering.FunctionalTests.csproj", "{E6058C10-AE1F-4FA9-A0A4-009F3C20361E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC38ED83-0B01-4AC8-A25F-A9E291C7F2A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC38ED83-0B01-4AC8-A25F-A9E291C7F2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC38ED83-0B01-4AC8-A25F-A9E291C7F2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC38ED83-0B01-4AC8-A25F-A9E291C7F2A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BB23997-AED8-4C39-84C8-A0B3FD68CCEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BB23997-AED8-4C39-84C8-A0B3FD68CCEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BB23997-AED8-4C39-84C8-A0B3FD68CCEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BB23997-AED8-4C39-84C8-A0B3FD68CCEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{812828DD-E4C6-4726-A83D-4E2199DC486F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{812828DD-E4C6-4726-A83D-4E2199DC486F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{812828DD-E4C6-4726-A83D-4E2199DC486F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{812828DD-E4C6-4726-A83D-4E2199DC486F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6550BB10-7B6B-4BB0-8B56-B651B6A92F92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6550BB10-7B6B-4BB0-8B56-B651B6A92F92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6550BB10-7B6B-4BB0-8B56-B651B6A92F92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6550BB10-7B6B-4BB0-8B56-B651B6A92F92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13F8F5D0-DB2B-4E64-8839-6A80F942D5D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F8F5D0-DB2B-4E64-8839-6A80F942D5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F8F5D0-DB2B-4E64-8839-6A80F942D5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F8F5D0-DB2B-4E64-8839-6A80F942D5D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0BB585F-6071-4738-BCF0-9DCB7838253E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0BB585F-6071-4738-BCF0-9DCB7838253E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0BB585F-6071-4738-BCF0-9DCB7838253E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0BB585F-6071-4738-BCF0-9DCB7838253E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0291C717-9AD5-4F50-9846-966814FC93C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0291C717-9AD5-4F50-9846-966814FC93C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0291C717-9AD5-4F50-9846-966814FC93C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0291C717-9AD5-4F50-9846-966814FC93C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8931F2FC-8465-4022-A754-4FA4F3AB54BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8931F2FC-8465-4022-A754-4FA4F3AB54BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8931F2FC-8465-4022-A754-4FA4F3AB54BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8931F2FC-8465-4022-A754-4FA4F3AB54BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6058C10-AE1F-4FA9-A0A4-009F3C20361E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6058C10-AE1F-4FA9-A0A4-009F3C20361E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6058C10-AE1F-4FA9-A0A4-009F3C20361E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6058C10-AE1F-4FA9-A0A4-009F3C20361E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ECC17FEA-57D4-4788-9CC1-C9BD7A513FD5} = {71FA73CE-C699-4E24-972D-B94E4AEEEF7F}
+		{AFF2355C-9887-4FE7-A0C3-E17FEF76DCEF} = {71FA73CE-C699-4E24-972D-B94E4AEEEF7F}
+		{812828DD-E4C6-4726-A83D-4E2199DC486F} = {AFF2355C-9887-4FE7-A0C3-E17FEF76DCEF}
+		{5FC0B19D-4FB7-4E69-AF43-399C15AA3AF9} = {71FA73CE-C699-4E24-972D-B94E4AEEEF7F}
+		{6550BB10-7B6B-4BB0-8B56-B651B6A92F92} = {5FC0B19D-4FB7-4E69-AF43-399C15AA3AF9}
+		{13F8F5D0-DB2B-4E64-8839-6A80F942D5D9} = {5FC0B19D-4FB7-4E69-AF43-399C15AA3AF9}
+		{7FD3C0A8-75C1-486A-A633-1F1ADD62B5B7} = {ECC17FEA-57D4-4788-9CC1-C9BD7A513FD5}
+		{81FC04A0-44DC-486B-BBE4-959AA155A585} = {ECC17FEA-57D4-4788-9CC1-C9BD7A513FD5}
+		{A0BB585F-6071-4738-BCF0-9DCB7838253E} = {81FC04A0-44DC-486B-BBE4-959AA155A585}
+		{CC38ED83-0B01-4AC8-A25F-A9E291C7F2A6} = {81FC04A0-44DC-486B-BBE4-959AA155A585}
+		{1BB23997-AED8-4C39-84C8-A0B3FD68CCEC} = {7FD3C0A8-75C1-486A-A633-1F1ADD62B5B7}
+		{0291C717-9AD5-4F50-9846-966814FC93C1} = {A38F848F-FAEF-49C7-9ED4-34E691023999}
+		{8931F2FC-8465-4022-A754-4FA4F3AB54BE} = {A38F848F-FAEF-49C7-9ED4-34E691023999}
+		{E6058C10-AE1F-4FA9-A0A4-009F3C20361E} = {A38F848F-FAEF-49C7-9ED4-34E691023999}
+	EndGlobalSection
+EndGlobal

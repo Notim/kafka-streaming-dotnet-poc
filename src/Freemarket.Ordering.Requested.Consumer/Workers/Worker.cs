@@ -20,20 +20,20 @@ public class Worker : BackgroundService
         var config = new ConsumerConfig
         {
             BootstrapServers = "localhost:9092",
-            GroupId = "order-creation",
+            GroupId = GroupIds.MailingService,
             AutoOffsetReset = AutoOffsetReset.Earliest,
             EnableAutoCommit = false
         };
         
         using (var consumer = new ConsumerBuilder<string, OrderRequestedByCustomer>(config)
                .SetKeyDeserializer(Deserializers.Utf8)
-               .SetValueDeserializer(new JsonKakfaMessage<OrderRequestedByCustomer>())
+               .SetValueDeserializer(new XmlKakfaMessage<OrderRequestedByCustomer>())
                .SetErrorHandler((_, e) => _logger.LogCritical($"Error: {e.Reason}"))
                .Build()
         )
         {
             
-            consumer.Subscribe("freemarket-order-requested-by-customer");
+            consumer.Subscribe(Topics.OrderRequestedTopic);
 
             while (!stoppingToken.IsCancellationRequested)
             {
@@ -42,7 +42,7 @@ public class Worker : BackgroundService
                 if (consumeResult is null)
                     continue;
                 
-                _logger.LogInformation("Message consumed {Topic} {Offset} {Partition} {Key} {@Value}", consumeResult.Topic, consumeResult.Offset, consumeResult.Partition.Value, consumeResult.Message.Key, consumeResult.Message.Value);
+                _logger.LogInformation("Message consumed {Topic} {Offset} {Partition} {Key} {@Value}", consumeResult.Topic, consumeResult.Offset, consumeResult.Partition.Value, consumeResult.Message.Key, consumeResult.Message.Value.ToString());
                 
                 Thread.Sleep(1000);
                 

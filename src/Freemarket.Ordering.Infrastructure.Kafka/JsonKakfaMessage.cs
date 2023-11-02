@@ -17,4 +17,3 @@ public class JsonKakfaMessage<T> : ISerializer<T>, IDeserializer<T>
     }
 
 }
-

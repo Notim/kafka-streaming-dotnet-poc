@@ -20,20 +20,20 @@ public class Worker : BackgroundService
         var config = new ConsumerConfig
         {
             BootstrapServers = "localhost:9092",
-            GroupId = "mailing",
+            GroupId = GroupIds.OrderCreation,
             AutoOffsetReset = AutoOffsetReset.Earliest,
             EnableAutoCommit = false,
         };
         
         using (var consumer = new ConsumerBuilder<string, OrderRequestedByCustomer>(config)
                .SetKeyDeserializer(Deserializers.Utf8)
-               .SetValueDeserializer(new JsonKakfaMessage<OrderRequestedByCustomer>())
+               .SetValueDeserializer(new XmlKakfaMessage<OrderRequestedByCustomer>())
                .SetErrorHandler((_, e) => _logger.LogCritical($"Error: {e.Reason}"))
                .Build()
         )
         {
             
-            consumer.Subscribe("freemarket-order-requested-by-customer");
+            consumer.Subscribe(Topics.OrderRequestedTopic);
 
             while (!stoppingToken.IsCancellationRequested)
             {

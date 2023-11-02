@@ -22,6 +22,9 @@ there we have 3 projects:
 
 ### 5 - run 1 instance from Freemarket.Mailing.OrderRequested.Consumer to consume messages from topic to 'send mail' about order
 
+Image of 6 consumers consuming 100K messages with parallel consume
+![img_1.png](img_1.png)
+
 obs: remembering that project is a Poc and is not ready to production environment!! and dont have best practices 
 
 libs: [Confluent](https://docs.confluent.io/kafka-clients/dotnet/current/overview.html)

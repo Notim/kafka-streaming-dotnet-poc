@@ -2,7 +2,6 @@ using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Confluent.Kafka;
 using Freemarket.Ordering.Applications.ExternalEvents;
-using Freemarket.Ordering.Domain.DomainModels;
 using Freemarket.Ordering.Infrastructure.Kafka;
 
 namespace Freemarket.Ordering.Bff.Controllers;
@@ -20,7 +19,7 @@ public class OrderingController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Get([FromBody] string variable)
+    public async Task<IActionResult> Get([FromForm] string variable, [FromForm] int quantity)
     {
         var config = new ProducerConfig
         {
@@ -28,30 +27,31 @@ public class OrderingController : ControllerBase
             
         };
 
-        var dynamicObject = new OrderRequestedByCustomer{
-            OrderId = Guid.NewGuid(),
-            TotalValue = decimal.MaxValue,
-            ClientName = variable
-        };
-
         using (var producer = new ProducerBuilder<string, OrderRequestedByCustomer>(config)
                               .SetKeySerializer(Serializers.Utf8)
-                              .SetValueSerializer(new JsonKakfaMessage<OrderRequestedByCustomer>())
+                              .SetValueSerializer(new XmlKakfaMessage<OrderRequestedByCustomer>())
                               .Build()
         )
         {
             
-            for (int i = 0; i <= 1000; i++) {
+            for (var i = 0; i <= quantity; i++) {
+                
+                var dynamicObject = new OrderRequestedByCustomer{
+                    OrderId = Guid.NewGuid(),
+                    TotalValue = decimal.MaxValue,
+                    ClientName = variable
+                };
+                
                 var headers = new Headers();
 
                 headers.Add("correlation-id", Encoding.UTF8.GetBytes(Guid.NewGuid().ToString()));
-                    
-                _logger.LogInformation("WRITING MESSAGE");
+                
+                _logger.LogInformation("WRITING MESSAGE {Message}", dynamicObject.ToString());
 
                 var result = await producer.ProduceAsync(
-                    "freemarket-order-requested-by-customer",
+                    Topics.OrderRequestedTopic,
                     new Message<string, OrderRequestedByCustomer>{
-                        Key   = Guid.NewGuid().ToString(),
+                        Key = dynamicObject.OrderId.ToString(),
                         Value = dynamicObject,
                         Headers = headers
                     }

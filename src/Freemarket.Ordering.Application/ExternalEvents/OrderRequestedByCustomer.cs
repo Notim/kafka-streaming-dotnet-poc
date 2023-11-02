@@ -9,4 +9,9 @@ public class OrderRequestedByCustomer
 
     public string? ClientName { get; set; }
 
+    public override string ToString()
+    {
+        return $@"OrderId: {OrderId} | TotalValue: {TotalValue} | ClientName: {ClientName}";
+    }
+
 }
